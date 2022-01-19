@@ -1,0 +1,56 @@
+/**
+ * 
+ *  vscode default debugging launch-settings
+ *
+ *  debug program for debugging from main-file
+ *  debug current for debugging current file
+ *
+ *  author: Caroline Borg
+ *
+ */
+{
+    "version": "0.5.0",
+    "configurations": [
+        {
+            "name": "debug program",
+            "type": "pwa-node",
+            "request": "launch",
+            "runtimeExecutable": "node",
+            "runtimeArgs": [
+                "--loader",
+                "ts-node/esm",
+            ],
+            "args": [
+                "src/main/index.ts" // change this to main file
+            ],
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**"
+            ],
+            "env": {
+                "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json",
+            }
+        },
+        {
+            "name": "debug current",
+            "type": "pwa-node",
+            "request": "launch",
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register",
+                "--loader",
+                "ts-node/esm",
+            ],
+            "args": [
+                "${file}"
+            ],
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**"
+            ],
+            "env": {
+                "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json",
+            }
+        }
+    ]
+}
